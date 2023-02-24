@@ -9,11 +9,15 @@ const Square = ({ column, value, onInput, disabled }) => {
     validateInput(cleanedValue) && onInput(cleanedValue);
   }
 
+  const getDisplayedValue = () => value > 0
+    ? value
+    : '';
+
   const renderValue = () => disabled
     ? value
     : <StyledInput
       type="number"
-      value={value}
+      value={getDisplayedValue()}
       onChange={_onChange}
       // Add status, style based on status
     />;

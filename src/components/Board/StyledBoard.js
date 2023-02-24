@@ -1,10 +1,19 @@
 import styled from "styled-components";
-import {squareSize} from "../Square/StyledSquare";
+
+const indexForBorderBottom = [2, 5];
+export const border = "5px solid rgba(255,125,255,.5)";
 
 export const StyledBoard = styled.div`
   display: flex;
+  flex-direction: column;
+  border: ${border};
+`;
+
+export const StyledRow = styled.div`
+  display: flex;
   flex-direction: row;
-  width: ${squareSize * 10}px;
-  height: ${squareSize * 10}px;
-  flex-wrap: wrap;
+  flex: 1;
+  width: 100%;
+  ${({row}) => (indexForBorderBottom.includes(row)) && `border-bottom: ${border};`}
+
 `;

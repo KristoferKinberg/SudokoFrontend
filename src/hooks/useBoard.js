@@ -19,7 +19,7 @@ const useBoard = () => {
     }, {});
 
   React.useEffect(() => {
-    const board = fetch();
+    //const board = fetch();
     const formattedBoard = createFormattedBoard(board);
 
     setPlayedBoard(formattedBoard);
