@@ -17,6 +17,7 @@ const Board = ({
         value={value}
         onInput={onInput(i)}
         disabled={disabled}
+
       />
     );
 

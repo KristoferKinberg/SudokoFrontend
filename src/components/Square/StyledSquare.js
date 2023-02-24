@@ -22,14 +22,6 @@ export const everyThird = [
     77,
 ]
 
-const cellStyle = `
-    height: ${squareSize}px;
-    width: ${squareSize}px;
-    border: 1px solid white;
-    color: white;
-    ${({column}) => (everyThird.includes(column)) && "border-right: 5px solid white;"}
-    `;
-
 export const StyledSquare = styled.div`
     display: flex;
     align-items: center;
@@ -45,7 +37,6 @@ export const StyledSquare = styled.div`
 export const StyledInput = styled.input`
   border: 0;
     color: white;
-
     height: ${squareSize}px;
     width: ${squareSize}px;
     background: transparent;

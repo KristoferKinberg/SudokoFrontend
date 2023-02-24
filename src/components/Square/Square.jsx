@@ -15,6 +15,7 @@ const Square = ({ column, value, onInput, disabled }) => {
       type="number"
       value={value}
       onChange={_onChange}
+      // Add status, style based on status
     />;
 
   return <StyledSquare column={column}>

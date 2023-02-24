@@ -3,6 +3,8 @@ import board from "../board.json";
 import {INPUT_STATUS, STATUS} from "../constants";
 
 const useBoard = () => {
+  const [playedBoard, setPlayedBoard] = React.useState(null);
+
   const createFormattedBoard = (board) => board
     .flat()
     .reduce((newBoard, value, index) => {
@@ -15,6 +17,13 @@ const useBoard = () => {
         }
       }
     }, {});
+
+  React.useEffect(() => {
+    const board = fetch();
+    const formattedBoard = createFormattedBoard(board);
+
+    setPlayedBoard(formattedBoard);
+  }, []);
 
   const updateBoard = (board, key, values) => Object
     .values(values)
@@ -41,10 +50,9 @@ const useBoard = () => {
 
   const correctGivenAnswers = () => {
     const playerAnswers = getPlayedSquares();
+    // Make request to backend, with inputed answers. Get response with answer status. run updateBoardStatus.
   }
 
-  const formattedBoard = createFormattedBoard(board);
-  const [playedBoard, setPlayedBoard] = React.useState(formattedBoard);
 
   const updateCell = (index, key, value) => {
     setPlayedBoard({
