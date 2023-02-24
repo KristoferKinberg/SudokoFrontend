@@ -1,13 +1,28 @@
 import { StyledBoard } from "./StyledBoard";
 import Square from "../Square/Square";
+import React from 'react';
+import {VALUE} from "../../constants";
 
-const Board = () => {
-    const renderRow = () =>
-    [0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => <Square column={i}/>)
+const Board = ({
+  updateCell,
+  board
+}) => {
+  const onInput = (index) => (value) => updateCell(index, VALUE, value);
 
-    return( <StyledBoard>
-        {renderRow()}
-    </StyledBoard>)
+  const renderSquare = () => Object
+    .values(board)
+    .map(({ value, disabled }, i) =>
+      <Square
+        column={i}
+        value={value}
+        onInput={onInput(i)}
+        disabled={disabled}
+      />
+    );
+
+    return(<StyledBoard>
+      {renderSquare()}
+    </StyledBoard>);
 }
 
 export default Board;

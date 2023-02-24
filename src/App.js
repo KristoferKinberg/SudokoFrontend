@@ -1,9 +1,16 @@
 import './App.css';
 import Board from './components/Board/Board';
+import useBoard from "./hooks/useBoard";
+import {StyledButton} from "./components/Button/StyledButton";
+
 function App() {
+  const {board, updateCell, correctGivenAnswers, correctBoard} = useBoard();
+
   return (
     <div className="App">
-      <Board/>
+      <Board board={board} updateCell={updateCell}/>
+      <StyledButton onClick={correctGivenAnswers}>Check answers</StyledButton>
+      <StyledButton onClick={correctBoard}>Correct</StyledButton>
     </div>
   );
 }
