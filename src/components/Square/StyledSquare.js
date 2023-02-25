@@ -15,6 +15,6 @@ export const StyledSquare = styled.div`
   color: white;
 
   ${({ disabled }) => !disabled && 'cursor: pointer;'}
-  ${({ column }) => (indexForBorderRight.includes(column)) && `border-right: ${border}`}
-  ${({ isSelected }) => isSelected && `background: ${purpleBg(.2)}`};
+  ${({ column }) => (indexForBorderRight.includes(column)) && `border-right: ${border};`}
+  ${({ isSelected }) => isSelected && `background: ${purpleBg(.2)};`}
 `;
