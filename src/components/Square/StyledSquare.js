@@ -14,7 +14,13 @@ export const StyledSquare = styled.div`
   border: 1px solid ${purpleBg(.1)};
   color: white;
 
-  ${({ disabled }) => !disabled && 'cursor: pointer;'}
+  ${({ disabled }) => !disabled 
+    ? `
+      cursor: pointer;
+      font-weight: 900;
+    `
+    : 'color: rgba(255,255,255,.7);' 
+  }
   ${({ column }) => (indexForBorderRight.includes(column)) && `border-right: ${border};`}
   ${({ isSelected }) => isSelected && `background: ${purpleBg(.2)};`}
 `;

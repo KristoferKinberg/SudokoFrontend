@@ -55,7 +55,6 @@ const useBoard = () => {
 
 
   const updateCell = (index, key, value) => {
-    debugger;
     setPlayedBoard({
       ...playedBoard,
       [index]: {
