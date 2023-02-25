@@ -12,6 +12,7 @@ export const StyledGame = styled.div`
 `;
 
 export const StyledButtonWrapper = styled.div`
+  margin-top: 10px;
   display: flex;
   flex: 1;
 `;
