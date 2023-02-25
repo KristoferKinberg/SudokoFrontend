@@ -2,18 +2,35 @@ import {StyledBoard, StyledRow} from "./StyledBoard";
 import Square from "../Square/Square";
 import React from 'react';
 import {VALUE} from "../../constants";
+import {useKeyPress} from "../../hooks/useKeypress";
+
+const validKeys = ["1","2","3","4","5","6","7","8","9"];
 
 const Board = ({
   updateCell,
   board
 }) => {
-  const onInput = (index) => (value) => updateCell(index, VALUE, value);
+  const [selectedSquare, setSelectedSquare] = React.useState(null);
+  const { keyPressed } = useKeyPress(validKeys);
+
+  const getSquare = (index) => board[index];
+
+  const isSelectedSquare = (index) => !!selectedSquare && index === selectedSquare;
+
+  const onSelectSquare = (index) => () => !getSquare(index).disabled && setSelectedSquare(index);
+
+  const onInput = (value) => selectedSquare && updateCell(selectedSquare, VALUE, value);
+
+  React.useEffect(() => {
+    onInput(keyPressed);
+  }, [keyPressed]);
 
   const renderSquare = ({ index, value, disabled }) => <Square
     column={index}
     value={value}
-    onInput={onInput(index)}
     disabled={disabled}
+    onClick={onSelectSquare(index)}
+    isSelected={isSelectedSquare(index)}
   />;
 
   const createRows = () => Object
