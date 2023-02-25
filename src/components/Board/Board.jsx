@@ -1,10 +1,10 @@
 import {StyledBoard, StyledRow} from "./StyledBoard";
 import Square from "../Square/Square";
 import React from 'react';
-import {VALUE} from "../../constants";
+import {BACKSPACE, VALUE} from "../../constants";
 import {useKeyPress} from "../../hooks/useKeypress";
 
-const validKeys = ["1","2","3","4","5","6","7","8","9"];
+const validKeys = ["1","2","3","4","5","6","7","8","9", BACKSPACE];
 
 const Board = ({
   updateCell,
@@ -19,7 +19,13 @@ const Board = ({
 
   const onSelectSquare = (index) => () => !getSquare(index).disabled && setSelectedSquare(index);
 
-  const onInput = (value) => selectedSquare && updateCell(selectedSquare, VALUE, value);
+  const onInput = (value) => {
+    const cleanedInput = value === BACKSPACE
+      ? ''
+      : value;
+
+    selectedSquare && updateCell(selectedSquare, VALUE, cleanedInput);
+  }
 
   React.useEffect(() => {
     onInput(keyPressed);
